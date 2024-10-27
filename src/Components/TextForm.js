@@ -11,27 +11,36 @@ export default function TextForm(props) {
         // setText("You have clicked on handleUpClick");
         let upText = text.toUpperCase();
         setText(upText);
+        props.showAlert("Text has been converted to Uppercase!", "success");
     }
 
     const handleLowClick = ()=>{
         let lowText = text.toLowerCase();
         setText(lowText);
+        props.showAlert("Text has been converted to Lowercase!", "success");
     }
 
     const handleClearClick = ()=>{
         let clearText = '';
         setText(clearText);
+        props.showAlert("Text Cleared!", "success");
     }
 
     const handleCopyClick = ()=>{
         if(text.length>0){
         navigator.clipboard.writeText(text);
-        alert("Text copied");
+        props.showAlert("Copied to Clipboard!", "success");
         }
         else{
             alert("No text to copy");
         }
 
+    }
+
+    const RemoveExtraSpaces =()=>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+        props.showAlert("Extra spaces has been removed!", "success");
     }
 
     const handleOnChange = (event)=>{
@@ -41,26 +50,28 @@ export default function TextForm(props) {
 
     return (
         <>
-        <div className='container'>
+        <div className='container' style={{color: props.mode==="dark"?"white":"#042743"}}> 
+            {/* #042743 */}
             <h2>{props.heading}</h2>
             <div className="mb-3">
-                {/* <label htmlFor="myBox" class="form-label">Example textarea</label> */}
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder='Enter your text here'></textarea>
+                {/* <label htmlFor="myBox" className"form-label">Example textarea</label> */}
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'white', color: props.mode==='dark'?'white':'#042743'}} id="myBox" rows="8" placeholder='Enter your text here'></textarea>
             </div>
             <button className="btn btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
             <button className="btn btn btn-primary mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
-            <button className="btn btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
+            <button className="btn btn btn-primary mx-1" onClick={RemoveExtraSpaces}>Remove Extra Spaces</button>
             <button className="btn btn btn-primary mx-1" id="copy" onClick={handleCopyClick}>Copy Text</button>
+            <button className="btn btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
         </div>
-        <div className="container my-3">
+        <div className="container my-3" style={{color: props.mode==="dark"?"white":"#042743"}}>
             <h3>Your text summary</h3>
-            <p>{text.split(" ").length} words, {text.length} characters</p>
+            <p>{text===""?0:text.trim().split('.').length -1} sentences, {text==="" ? 0 : text.trim().split(" ").length} words and {text.length} characters</p>
 
             <h4>Time to read</h4>
-            <p>{0.008*(text.split(" ").length)} Minutes</p>
+            <p>{text==="" ? 0 :  0.008*(text.split(" ").length)} Minutes</p>
 
             <h4>Text Preview</h4>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter something in the text box above to preview it here"}</p>
         </div>
         </>
     )
