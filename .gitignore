@@ -24,4 +24,4 @@ yarn-error.log*
 
 /src/Components/About_with_router.js
 /src/Components/Navbar_with_router.js
-/src/Components/App_with_router.js
+/src/App_with_router.js
