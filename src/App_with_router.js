@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
-// import About from './Components/About';
+import About from './Components/About';
 import Alert from './Components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 //Reference for react router: https://reactrouter.com/en/main/start/overview, https://v5.reactrouter.com/web/guides/quick-start
 
 function App() {
@@ -54,26 +54,26 @@ function App() {
       {/* <Navbar title="Case Converter & Text Analyzer" aboutTextUtils="About" /> */}
       {/* <Navbar/> This will use deault props */}
 
-      {/* <Router> */}
+      <Router>
 
         <Navbar title="Text Utilizer" mode={mode} toggleMode={toggleMode} />
 
         <Alert alert={alert} />
 
         <div className="container my-3">
-          {/* <Switch> */}
+          <Switch>
                 {/* /users --> Component 1
                 /users/home --> Component 2 (if you don't write 'exact path', it will show Component 1 due to partial matching)*/}
-            {/* <Route exact path="/"> */}
+            <Route exact path="/">
               <TextForm heading="Try Text Utilizer" mode={mode} showAlert={showAlert} />
-            {/* </Route>
-            <Route exact path="/about"> */}
-              {/* <About mode={mode}/> */}
-            {/* </Route>
-          </Switch> */}
+            </Route>
+            <Route exact path="/about">
+              <About mode={mode}/>
+            </Route>
+          </Switch>
         </div>
 
-      {/* </Router> */}
+      </Router>
 
     </>
 
