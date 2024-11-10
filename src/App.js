@@ -26,8 +26,19 @@ function App() {
     }, 2000);
   }
 
+  // const removeBodyClasses = ()=>{
+  //   document.body.classList.remove('bg-light');
+  //   document.body.classList.remove('bg-dark');
+  //   document.body.classList.remove('bg-primary');
+  //   document.body.classList.remove('bg-danger');
+  //   document.body.classList.remove('bg-success');
+  //   document.body.classList.remove('bg-warning');
+  // }
 
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    // removeBodyClasses();
+    // console.log(cls);
+    // document.body.classList.add('bg-'+cls);
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
@@ -66,11 +77,11 @@ function App() {
                 /users/home --> Component 2 (if you don't write 'exact path', it will show Component 1 due to partial matching)*/}
             {/* <Route exact path="/"> */}
               <TextForm heading="Try Text Utilizer" mode={mode} showAlert={showAlert} />
-            {/* </Route>
-            <Route exact path="/about"> */}
+            {/* </Route> */}
+            {/* <Route exact path="/about"> */}
               {/* <About mode={mode}/> */}
-            {/* </Route>
-          </Switch> */}
+            {/* </Route> */}
+          {/* </Switch> */}
         </div>
 
       {/* </Router> */}

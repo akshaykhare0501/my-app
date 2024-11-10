@@ -65,7 +65,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-Just serarch 'Deployment of create react app' on google
+Just serarch 'Deployment of create react app' on google and https://create-react-app.dev/docs/deployment/ this will open, and then search for Github pages.
+
+After following steps in that:
+
+Terminal:
+npm run deploy
+
+git status
+git add .
+git status
+git commit -m "updated changes"
+git branch -M main
+git remote add origin https://github.com/your-username/your-repository-name.git
+git push -u origin main
+
+
+
+
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
